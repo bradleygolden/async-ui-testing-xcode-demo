@@ -10,9 +10,15 @@
 
 @interface ContactViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *contactLabel;
+
 @end
 
 @implementation ContactViewController
+
+- (IBAction)contactButtonTouched:(id)sender {
+    self.contactLabel.hidden = NO;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

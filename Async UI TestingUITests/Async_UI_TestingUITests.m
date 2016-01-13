@@ -32,9 +32,48 @@
     [super tearDown];
 }
 
-- (void)testExample {
-    // Use recording to get started writing UI tests.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+- (void)testButton {
+    XCUIApplication *app = [[XCUIApplication alloc] init];
+    
+    XCUIElement *contactButton = app.buttons[@"contactButton"];
+    
+    // tap the submit button
+    [app.buttons[@"submitButton"] tap];
+    
+    // press the contact button
+    [contactButton tap];
+}
+
+- (void)testButtonSync {
+    XCUIApplication *app = [[XCUIApplication alloc] init];
+    
+    XCUIElement *contactButton = app.buttons[@"contactButton"];
+    
+    // tap the submit button
+    [app.buttons[@"submitButton"] tap];
+    
+    // wait 10 seconds to segue to the next view
+    [NSThread sleepForTimeInterval:10];
+    
+    // press the contact button
+    [contactButton tap];
+}
+
+- (void)testButtonAsync {
+    XCUIApplication *app = [[XCUIApplication alloc] init];
+    
+    XCUIElement *contactButton = app.buttons[@"contactButton"];
+    
+    NSPredicate *exists = [NSPredicate predicateWithFormat:@"exists == 1"];
+    
+    [app.buttons[@"submitButton"] tap]; // tap the submit button
+    
+    // perform async loop, waiting for the object specified to appear
+    [self expectationForPredicate:exists evaluatedWithObject:contactButton handler:nil];
+    
+    [self waitForExpectationsWithTimeout:10 handler:nil]; // wait no longer than 10 seconds for the request to go through
+    
+    [contactButton tap]; // this object has been found, perform this action
 }
 
 @end

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Submit View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SubmitViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +16,90 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QD4-ks-Gv8">
+                                <rect key="frame" x="211" y="102" width="178" height="116"/>
+                                <accessibility key="accessibilityConfiguration" identifier="submitButton"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="178" id="5Z8-Bm-rUA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZWx-MV-pYp"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="E1F-tI-C9b">
+                                <rect key="frame" x="282" y="281" width="37" height="37"/>
+                                <color key="color" cocoaTouchSystemColor="darkTextColor"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QD4-ks-Gv8" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-140" id="Mmw-z6-B5h"/>
+                            <constraint firstItem="E1F-tI-C9b" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="oD1-2c-b4X"/>
+                            <constraint firstItem="QD4-ks-Gv8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oK0-lO-oxI"/>
+                            <constraint firstItem="QD4-ks-Gv8" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="82" id="qmN-o9-1Bw"/>
+                            <constraint firstItem="E1F-tI-C9b" firstAttribute="centerX" secondItem="QD4-ks-Gv8" secondAttribute="centerX" id="sR6-ac-2e6"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="activityView" destination="E1F-tI-C9b" id="yxW-gb-b47"/>
+                        <segue destination="8xt-wI-4ch" kind="show" identifier="contactSegue" id="2NF-ZB-g99"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="83" y="477"/>
+        </scene>
+        <!--Contact View Controller-->
+        <scene sceneID="VsY-Ls-GC5">
+            <objects>
+                <viewController id="8xt-wI-4ch" customClass="ContactViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="u3u-rl-yay"/>
+                        <viewControllerLayoutGuide type="bottom" id="ByS-hW-iv9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="r0K-bd-twi">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Im9-48-RhH">
+                                <rect key="frame" x="211" y="242" width="178" height="116"/>
+                                <accessibility key="accessibilityConfiguration" identifier="contactButton"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="178" id="AEG-9W-8ln"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <state key="normal" title="Contact"/>
+                                <connections>
+                                    <action selector="contactButtonTouched:" destination="8xt-wI-4ch" eventType="touchUpInside" id="HHq-oq-031"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Button Pressed!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEf-Q9-yOC">
+                                <rect key="frame" x="206" y="422" width="188" height="21"/>
+                                <accessibility key="accessibilityConfiguration" identifier="contactLabel"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Im9-48-RhH" firstAttribute="centerY" secondItem="r0K-bd-twi" secondAttribute="centerY" id="ZlV-vI-nCH"/>
+                            <constraint firstItem="vEf-Q9-yOC" firstAttribute="top" secondItem="Im9-48-RhH" secondAttribute="bottom" constant="64" id="db8-cn-MgG"/>
+                            <constraint firstItem="Im9-48-RhH" firstAttribute="centerX" secondItem="r0K-bd-twi" secondAttribute="centerX" id="e4j-hO-cku"/>
+                            <constraint firstItem="ByS-hW-iv9" firstAttribute="top" secondItem="vEf-Q9-yOC" secondAttribute="bottom" constant="157" id="l1G-LD-vbT"/>
+                            <constraint firstItem="Im9-48-RhH" firstAttribute="centerX" secondItem="vEf-Q9-yOC" secondAttribute="centerX" id="uxc-QV-Ogb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contactLabel" destination="vEf-Q9-yOC" id="mHT-gd-ZVq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LRy-92-n99" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="749" y="477"/>
         </scene>
     </scenes>
 </document>
